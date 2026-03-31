@@ -1,0 +1,806 @@
+{
+  "_meta": {
+    "project": "Ground Truth — DroneDeploy Aerial PM Research Data",
+    "prepared_for": "Nishchay Vishwanath",
+    "purpose": "Visualization data package for DroneDeploy hardware ecosystem, market sizing, competitive landscape, and regulatory timeline analysis",
+    "date": "March 2026",
+    "citation_policy": "Every data point includes a source field referencing the full citations in the references array at the bottom of this file. Use source codes when building chart annotations."
+  },
+
+  "hardware_ecosystem": {
+    "_description": "DroneDeploy hardware platform support matrix. Support levels, NDAA compliance, BVLOS eligibility, and enterprise density for all platforms in or adjacent to the DroneDeploy ecosystem.",
+    "_sources": ["DD_AERIAL_PRODUCT", "DD_APR2025", "DD_JAN2025", "DD_JUL2025", "DD_OCT2025", "SKYEBROWSE_REVIEW", "UAVCOACH_DJI_ALT", "DD_AERIAL_PRO"],
+    "platforms": [
+      {
+        "id": "dji_m350",
+        "name": "DJI Matrice 350/300",
+        "manufacturer": "DJI",
+        "manufacturer_country": "China",
+        "dd_support_level": "Full",
+        "dd_support_detail": "Flight planning + processing",
+        "dd_support_score": 3,
+        "ndaa_compliant": false,
+        "bvlos_eligible": true,
+        "bvlos_note": "Via DroneDeploy nationwide waiver",
+        "enterprise_density": "Very High",
+        "enterprise_density_score": 5,
+        "use_cases": ["Construction monitoring", "Infrastructure inspection", "Mining surveys", "Precision agriculture"],
+        "dock_compatible": false,
+        "flagship": true,
+        "risk_flag": "Primary NDAA exposure — not compliant for federal/gov-funded projects",
+        "source": "DD_AERIAL_PRODUCT,DD_APR2025,UAVCOACH_DJI_ALT"
+      },
+      {
+        "id": "dji_dock",
+        "name": "DJI Dock 1 / 2 / 3",
+        "manufacturer": "DJI",
+        "manufacturer_country": "China",
+        "dd_support_level": "Full",
+        "dd_support_detail": "Flight planning + processing + mission chaining",
+        "dd_support_score": 3,
+        "ndaa_compliant": false,
+        "bvlos_eligible": true,
+        "bvlos_note": "Core of DroneDeploy BVLOS program",
+        "enterprise_density": "High",
+        "enterprise_density_score": 4,
+        "use_cases": ["Autonomous site monitoring", "Daily construction progress", "Security perimeter", "Data center surveillance"],
+        "dock_compatible": true,
+        "flagship": false,
+        "risk_flag": "Part 108 as proposed would restrict DJI BVLOS — dock program at regulatory risk",
+        "source": "DD_APR2025,DD_OCT2025,DRONEDJ_BVLOS"
+      },
+      {
+        "id": "dji_mini4",
+        "name": "DJI Mini 4 Pro",
+        "manufacturer": "DJI",
+        "manufacturer_country": "China",
+        "dd_support_level": "Full",
+        "dd_support_detail": "Full GA since October 2025",
+        "dd_support_score": 3,
+        "ndaa_compliant": false,
+        "bvlos_eligible": false,
+        "bvlos_note": "Sub-250g — exempt from registration but not BVLOS eligible",
+        "enterprise_density": "Growing",
+        "enterprise_density_score": 2,
+        "use_cases": ["Mid-market site documentation", "Quick aerial photography", "SMB construction"],
+        "dock_compatible": false,
+        "flagship": false,
+        "risk_flag": "No BVLOS eligibility limits operational ceiling",
+        "source": "DD_JUL2025,DD_OCT2025"
+      },
+      {
+        "id": "skydio_x10",
+        "name": "Skydio X10",
+        "manufacturer": "Skydio",
+        "manufacturer_country": "USA",
+        "dd_support_level": "Processing Only",
+        "dd_support_detail": "Processing integration only — no native flight planning",
+        "dd_support_score": 1,
+        "ndaa_compliant": true,
+        "bvlos_eligible": true,
+        "bvlos_note": "BVLOS eligible with appropriate waiver",
+        "enterprise_density": "Medium",
+        "enterprise_density_score": 3,
+        "use_cases": ["Federal/government projects", "NDAA-constrained workflows", "Autonomous obstacle avoidance", "Infrastructure inspection"],
+        "dock_compatible": false,
+        "flagship": false,
+        "risk_flag": "Highest-priority native flight integration gap — active churn risk",
+        "hypothesis": "H1 + H2: Top candidate for first non-DJI native flight integration",
+        "source": "DD_AERIAL_PRODUCT,SKYEBROWSE_REVIEW,UAVCOACH_DJI_ALT"
+      },
+      {
+        "id": "wingtra_one",
+        "name": "Wingtra One Gen II",
+        "manufacturer": "Wingtra",
+        "manufacturer_country": "Switzerland",
+        "dd_support_level": "Processing Only",
+        "dd_support_detail": "Processing integration only — no native flight planning",
+        "dd_support_score": 1,
+        "ndaa_compliant": true,
+        "bvlos_eligible": true,
+        "bvlos_note": "Fixed-wing VTOL optimized for large-area surveys",
+        "enterprise_density": "Medium",
+        "enterprise_density_score": 3,
+        "use_cases": ["Large-area mapping", "Mining surveys", "Agricultural surveys", "Corridor mapping"],
+        "dock_compatible": false,
+        "flagship": false,
+        "risk_flag": "Narrower use case than Skydio — strong in mining/survey vertical only",
+        "hypothesis": "H2: Strong second priority after Skydio for native flight integration",
+        "source": "DD_AERIAL_PRODUCT,UAVCOACH_DJI_ALT"
+      },
+      {
+        "id": "parrot_anafi",
+        "name": "Parrot ANAFI USA",
+        "manufacturer": "Parrot",
+        "manufacturer_country": "France",
+        "dd_support_level": "Processing Only",
+        "dd_support_detail": "Processing integration only",
+        "dd_support_score": 1,
+        "ndaa_compliant": true,
+        "bvlos_eligible": false,
+        "bvlos_note": "Limited BVLOS eligibility",
+        "enterprise_density": "Low-Medium",
+        "enterprise_density_score": 2,
+        "use_cases": ["Government/defense field operations", "Public safety"],
+        "dock_compatible": false,
+        "flagship": false,
+        "risk_flag": "Low enterprise density — lower priority for native flight integration",
+        "source": "UAVCOACH_DJI_ALT,SKYEBROWSE_REVIEW"
+      },
+      {
+        "id": "autel_evo2",
+        "name": "Autel EVO II Pro",
+        "manufacturer": "Autel Robotics",
+        "manufacturer_country": "China",
+        "dd_support_level": "Processing Only",
+        "dd_support_detail": "Processing integration only",
+        "dd_support_score": 1,
+        "ndaa_compliant": false,
+        "bvlos_eligible": false,
+        "bvlos_note": "Not BVLOS eligible",
+        "enterprise_density": "Low",
+        "enterprise_density_score": 1,
+        "use_cases": ["Consumer-adjacent commercial", "Photography"],
+        "dock_compatible": false,
+        "flagship": false,
+        "risk_flag": "Not NDAA-compliant and no BVLOS — lowest strategic priority",
+        "source": "UAVCOACH_DJI_ALT"
+      },
+      {
+        "id": "anzu_robotics",
+        "name": "Anzu Robotics Raptor",
+        "manufacturer": "Anzu Robotics",
+        "manufacturer_country": "USA",
+        "dd_support_level": "Partnership",
+        "dd_support_detail": "Strategic partnership — US-manufactured DJI-derived platform",
+        "dd_support_score": 2,
+        "ndaa_compliant": true,
+        "bvlos_eligible": true,
+        "bvlos_note": "In development — dock platform forthcoming",
+        "enterprise_density": "Early Stage",
+        "enterprise_density_score": 1,
+        "use_cases": ["NDAA-compliant DJI workflow replacement", "Federal projects"],
+        "dock_compatible": false,
+        "flagship": false,
+        "risk_flag": "Early stage — watch closely as NDAA pressure increases on DJI",
+        "source": "DD_AERIAL_PRODUCT,UAVCOACH_DJI_ALT"
+      }
+    ],
+    "support_level_legend": {
+      "Full": { "score": 3, "description": "Native flight planning + processing + dock/mission features", "color": "#10b981" },
+      "Partnership": { "score": 2, "description": "Strategic partner with partial integration roadmap", "color": "#f59e0b" },
+      "Processing Only": { "score": 1, "description": "Processing integration only — no native flight planning in DroneDeploy", "color": "#ef4444" }
+    }
+  },
+
+  "market_sizing": {
+    "_description": "Commercial drone market size, growth rates, and segment breakdown. Multiple analyst sources included — ranges reflect legitimate variance in methodology and scope definitions.",
+    "_sources": ["GRANDVIEW_DRONE", "PERSISTENCE_DRONE", "MORDOR_DRONE", "JOUAV_COMPANIES", "PRECEDENCE_COMMERCIAL"],
+    "total_market": {
+      "note": "Global total drone market (hardware + software + services, all segments). Consensus estimate midpoint used where sources diverge.",
+      "data": [
+        { "year": 2022, "value_bn": 26.8, "source": "GRANDVIEW_DRONE", "note": "Historical baseline" },
+        { "year": 2023, "value_bn": 33.1, "source": "GRANDVIEW_DRONE", "note": "Historical" },
+        { "year": 2024, "value_bn": 47.9, "value_range_low": 47.9, "value_range_high": 54.8, "source": "GRANDVIEW_DRONE,NEXTMSC_DRONE", "note": "Actual — source variance due to scope differences" },
+        { "year": 2025, "value_bn": 65.1, "value_range_low": 48.2, "value_range_high": 84.0, "source": "NEXTMSC_DRONE,PERSISTENCE_DRONE,GRANDVIEW_DRONE", "note": "2025 estimate — wide range reflects commercial vs total market scope" },
+        { "year": 2026, "value_bn": 75.2, "source": "MORDOR_DRONE", "note": "Forecast" },
+        { "year": 2027, "value_bn": 87.4, "source": "GRANDVIEW_DRONE", "note": "Forecast" },
+        { "year": 2028, "value_bn": 101.2, "source": "GRANDVIEW_DRONE", "note": "Forecast" },
+        { "year": 2029, "value_bn": 117.2, "source": "GRANDVIEW_DRONE", "note": "Forecast" },
+        { "year": 2030, "value_bn": 117.6, "source": "NEXTMSC_DRONE", "note": "Forecast" },
+        { "year": 2033, "value_bn": 182.5, "source": "GRANDVIEW_DRONE", "note": "Long-range forecast" }
+      ],
+      "cagr_2025_2030": 12.5,
+      "cagr_source": "GRANDVIEW_DRONE,SKYQUEST_DRONE",
+      "cagr_note": "Consensus CAGR ~12-13% across major analyst sources for total market"
+    },
+    "commercial_software_services": {
+      "note": "Software + services segment only — most relevant to DroneDeploy's TAM",
+      "data": [
+        { "year": 2024, "value_bn": 2.65, "source": "TECHNAVIO_COMMERCIAL", "note": "Software and services segment" },
+        { "year": 2025, "value_bn": 16.5, "source": "PRECEDENCE_SERVICES", "note": "Drone services market — broader than pure software" },
+        { "year": 2030, "value_bn": 55.0, "source": "PRECEDENCE_SERVICES", "note": "Forecast" },
+        { "year": 2035, "value_bn": 142.2, "source": "PRECEDENCE_SERVICES", "note": "Long-range forecast" }
+      ],
+      "cagr_2026_2035": 24.0,
+      "cagr_source": "PRECEDENCE_SERVICES"
+    },
+    "by_vertical": {
+      "note": "Revenue share by industry vertical, 2025 estimates",
+      "data": [
+        { "vertical": "Infrastructure Inspection", "share_pct": 25, "cagr_note": "Fastest growing enterprise vertical", "dd_relevance": "High", "source": "PERSISTENCE_DRONE" },
+        { "vertical": "Construction & Mining", "share_pct": 18, "cagr_note": "Core DD enterprise segment", "dd_relevance": "Very High", "source": "TECHNAVIO_COMMERCIAL" },
+        { "vertical": "Agriculture", "share_pct": 22, "cagr_note": "Highest ROI per flight hour", "dd_relevance": "Medium", "source": "MORDOR_DRONE" },
+        { "vertical": "Defense & Security", "share_pct": 20, "cagr_note": "Government-funded, NDAA-constrained", "dd_relevance": "Low-Medium", "source": "TECHNAVIO_COMMERCIAL" },
+        { "vertical": "Energy & Utilities", "share_pct": 8, "cagr_note": "Growing via BVLOS for pipeline inspection", "dd_relevance": "High", "source": "TECHNAVIO_COMMERCIAL" },
+        { "vertical": "Logistics & Delivery", "share_pct": 4, "cagr_note": "Fastest future growth but not current DD focus", "dd_relevance": "Low", "source": "PRECEDENCE_SERVICES" },
+        { "vertical": "Other", "share_pct": 3, "cagr_note": "Media, insurance, wildlife", "dd_relevance": "Low", "source": "TECHNAVIO_COMMERCIAL" }
+      ]
+    },
+    "by_region": {
+      "note": "Geographic revenue share, 2025",
+      "data": [
+        { "region": "North America", "share_pct": 40, "cagr_forecast": 44, "note": "US leads — FAA BVLOS momentum, enterprise adoption", "source": "GRANDVIEW_DRONE,TECHNAVIO_COMMERCIAL" },
+        { "region": "Asia Pacific", "share_pct": 35, "cagr_forecast": 9.9, "note": "China manufacturing dominance, India growth", "source": "PERSISTENCE_DRONE" },
+        { "region": "Europe", "share_pct": 18, "cagr_forecast": 8.5, "note": "U-space regulatory framework developing", "source": "MORDOR_DRONE" },
+        { "region": "Rest of World", "share_pct": 7, "cagr_forecast": 7.0, "note": "Middle East, LatAm emerging", "source": "MORDOR_DRONE" }
+      ]
+    },
+    "by_operation_mode": {
+      "note": "Split between VLOS vs BVLOS operations — key signal for DroneDeploy's dock/autonomous bet",
+      "data": [
+        { "mode": "VLOS (Visual Line of Sight)", "share_pct_2025": 70, "growth_trajectory": "Declining share", "source": "PERSISTENCE_DRONE" },
+        { "mode": "BVLOS (Beyond Visual Line of Sight)", "share_pct_2025": 30, "growth_trajectory": "Fastest growing sub-segment", "source": "PERSISTENCE_DRONE", "note": "Regulatory easing is primary growth driver" }
+      ]
+    },
+    "dronedeploy_context": {
+      "arr_estimate_usd_m": 75,
+      "sites_active": "3M+",
+      "countries": 200,
+      "enterprise_customers": "5000+",
+      "funding_total_usd_m": 156,
+      "employees_approx": 275,
+      "source": "DD_BRIEFING_INTERNAL"
+    }
+  },
+
+  "competitive_landscape": {
+    "_description": "DroneDeploy vs key competitors across pricing, features, target segments, hardware support, and AI capabilities.",
+    "_sources": ["PIX4D_COMPARISON", "DRONEDESK_COMPARISON", "SKYEBROWSE_REVIEW", "G2_DD_REVIEWS", "ANVIL_COMPARISON", "CHECKTHAT_REVIEWS"],
+    "platforms": [
+      {
+        "id": "dronedeploy",
+        "name": "DroneDeploy",
+        "type": "End-to-end reality capture platform",
+        "founded": 2013,
+        "hq": "San Francisco, CA",
+        "pricing_monthly_low": 329,
+        "pricing_monthly_high": 599,
+        "pricing_model": "Subscription tiers",
+        "pricing_note": "Enterprise pricing custom — $329-599 published tiers. Aerial Pro adds ~$200-300/mo.",
+        "target_segment": "Enterprise",
+        "primary_verticals": ["Construction", "Mining", "Energy", "Agriculture"],
+        "hardware_support": "DJI native flight; all major platforms for processing",
+        "ai_capabilities": ["Progress AI", "Safety AI", "Inspection AI"],
+        "ai_maturity": "Production (launched Horizons 2025)",
+        "cloud_processing": true,
+        "desktop_processing": false,
+        "bvlos_dock_support": true,
+        "integrations": ["Procore", "Autodesk Construction Cloud", "Esri ArcGIS", "BIM 360"],
+        "g2_rating": 4.5,
+        "g2_review_count": 98,
+        "key_strength": "End-to-end platform with AI agents and BVLOS dock automation",
+        "key_weakness": "DJI-only native flight; pricing premium vs mid-market alternatives; no desktop processing",
+        "pricing_position": "Premium",
+        "feature_breadth_score": 9,
+        "source": "PIX4D_COMPARISON,SKYEBROWSE_REVIEW,G2_DD_REVIEWS,CHECKTHAT_REVIEWS"
+      },
+      {
+        "id": "pix4d",
+        "name": "Pix4D",
+        "type": "Photogrammetry software suite",
+        "founded": 2011,
+        "hq": "Lausanne, Switzerland",
+        "pricing_monthly_low": 49,
+        "pricing_monthly_high": 315,
+        "pricing_model": "Modular subscription + perpetual license",
+        "pricing_note": "PIX4Dcloud from $49.20/mo; Advanced $249/mo; Desktop perpetual available. Most affordable major option.",
+        "target_segment": "Mid-market to enterprise",
+        "primary_verticals": ["Surveying", "Engineering", "Construction", "Telecom", "Agriculture"],
+        "hardware_support": "Multi-platform; hardware agnostic for processing",
+        "ai_capabilities": ["Basic AI-assisted processing"],
+        "ai_maturity": "Limited — primarily algorithmic, not agent-based",
+        "cloud_processing": true,
+        "desktop_processing": true,
+        "bvlos_dock_support": false,
+        "integrations": ["ArcGIS", "AutoCAD", "Various GIS tools"],
+        "g2_rating": 4.4,
+        "g2_review_count": 180,
+        "key_strength": "Survey-grade accuracy; desktop + cloud flexibility; LiDAR processing; lower price point",
+        "key_weakness": "No AI agents; no BVLOS/dock; weaker collaboration tools; no flight planning for all platforms",
+        "pricing_position": "Mid-market",
+        "feature_breadth_score": 7,
+        "source": "PIX4D_COMPARISON,ANVIL_COMPARISON,DRONEDESK_COMPARISON"
+      },
+      {
+        "id": "propeller",
+        "name": "Propeller Aero",
+        "type": "Construction & mining analytics platform",
+        "founded": 2014,
+        "hq": "Sydney, Australia",
+        "pricing_monthly_low": null,
+        "pricing_monthly_high": null,
+        "pricing_model": "Per-map or subscription (enterprise pricing)",
+        "pricing_note": "$250/map model cited historically; enterprise subscription pricing on request",
+        "target_segment": "Enterprise (construction/mining focus)",
+        "primary_verticals": ["Construction", "Mining", "Waste management", "Earthworks"],
+        "hardware_support": "Multi-platform + AeroPoints proprietary GCPs required for high precision",
+        "ai_capabilities": ["Earthworks analytics", "Volume calculations", "Progress tracking"],
+        "ai_maturity": "Specialized — deep in earthworks, not agent-based",
+        "cloud_processing": true,
+        "desktop_processing": false,
+        "bvlos_dock_support": false,
+        "integrations": ["Procore", "DirtMate machine tracking"],
+        "g2_rating": 4.3,
+        "g2_review_count": 45,
+        "key_strength": "Best-in-class earthworks analytics; AeroPoints for high accuracy; construction-specific tools",
+        "key_weakness": "Requires AeroPoints hardware; narrow vertical focus; no BVLOS; no AI agents",
+        "pricing_position": "Enterprise",
+        "feature_breadth_score": 6,
+        "source": "DRONEDESK_COMPARISON,CHECKTHAT_REVIEWS"
+      },
+      {
+        "id": "esri_sitescan",
+        "name": "Esri Site Scan (ArcGIS)",
+        "type": "GIS-integrated drone mapping",
+        "founded": null,
+        "hq": "Redlands, CA",
+        "pricing_monthly_low": null,
+        "pricing_monthly_high": null,
+        "pricing_model": "ArcGIS ecosystem licensing",
+        "pricing_note": "Bundled with ArcGIS — pricing varies by ArcGIS license tier",
+        "target_segment": "Government & GIS enterprise",
+        "primary_verticals": ["Government", "Utilities", "Environmental", "Infrastructure"],
+        "hardware_support": "Multi-platform",
+        "ai_capabilities": ["ArcGIS AI tools integration"],
+        "ai_maturity": "GIS-focused analytics, not operational AI agents",
+        "cloud_processing": true,
+        "desktop_processing": true,
+        "bvlos_dock_support": false,
+        "integrations": ["Full ArcGIS ecosystem", "Esri products"],
+        "g2_rating": 4.2,
+        "g2_review_count": 30,
+        "key_strength": "Deep ArcGIS integration; government enterprise relationships; strong GIS workflows",
+        "key_weakness": "Locked to Esri ecosystem; no BVLOS/dock; weaker construction-specific tools vs DD",
+        "pricing_position": "Enterprise (bundled)",
+        "feature_breadth_score": 6,
+        "source": "DRONEDESK_COMPARISON"
+      },
+      {
+        "id": "dji_flighthub",
+        "name": "DJI FlightHub 2",
+        "type": "Fleet management & mission planning",
+        "founded": null,
+        "hq": "Shenzhen, China",
+        "pricing_monthly_low": null,
+        "pricing_monthly_high": null,
+        "pricing_model": "DJI ecosystem — hardware bundled",
+        "pricing_note": "Part of DJI ecosystem; pricing tied to hardware purchase",
+        "target_segment": "DJI hardware users",
+        "primary_verticals": ["Construction", "Public Safety", "Energy"],
+        "hardware_support": "DJI only — full fleet telemetry",
+        "ai_capabilities": ["Basic flight automation"],
+        "ai_maturity": "Hardware-centric, not data reasoning",
+        "cloud_processing": true,
+        "desktop_processing": false,
+        "bvlos_dock_support": true,
+        "integrations": ["DJI ecosystem only"],
+        "g2_rating": null,
+        "g2_review_count": null,
+        "key_strength": "Native DJI integration; fleet telemetry; strong for DJI-only operations",
+        "key_weakness": "Hardware-locked to DJI; no AI agents; no third-party hardware; NDAA risk same as DJI",
+        "pricing_position": "Bundled",
+        "feature_breadth_score": 5,
+        "source": "SKYEBROWSE_REVIEW,G2_SKYDIO_ALT"
+      },
+      {
+        "id": "skydio_cloud",
+        "name": "Skydio Cloud",
+        "type": "Autonomous flight + cloud platform",
+        "founded": 2014,
+        "hq": "San Mateo, CA",
+        "pricing_monthly_low": null,
+        "pricing_monthly_high": null,
+        "pricing_model": "Hardware + cloud subscription",
+        "pricing_note": "Cloud platform included with hardware purchase; enterprise subscription on request",
+        "target_segment": "Enterprise (inspection focus)",
+        "primary_verticals": ["Infrastructure inspection", "Public safety", "Defense"],
+        "hardware_support": "Skydio only — best-in-class autonomous flight",
+        "ai_capabilities": ["Autonomous obstacle avoidance", "Subject tracking", "3D scan automation"],
+        "ai_maturity": "Flight AI mature; data analytics developing",
+        "cloud_processing": true,
+        "desktop_processing": false,
+        "bvlos_dock_support": true,
+        "integrations": ["DroneDeploy (processing)", "Limited third-party"],
+        "g2_rating": 4.1,
+        "g2_review_count": 25,
+        "key_strength": "Best-in-class autonomous flight; NDAA compliant; US manufactured; BVLOS dock",
+        "key_weakness": "Hardware-locked to Skydio; weaker data processing vs DD; limited integrations",
+        "pricing_position": "Premium",
+        "feature_breadth_score": 5,
+        "source": "G2_SKYDIO_ALT,UAVCOACH_DJI_ALT"
+      }
+    ],
+    "feature_matrix": {
+      "_description": "Feature capability comparison. Score: 1=No, 2=Partial/Limited, 3=Full",
+      "features": [
+        "Native flight planning",
+        "Cloud processing",
+        "Desktop processing",
+        "AI reasoning agents",
+        "BVLOS/dock support",
+        "Multi-platform hardware",
+        "NDAA-compliant hardware",
+        "Enterprise integrations (Procore/BIM)",
+        "Survey-grade accuracy",
+        "Pricing accessibility (inverse of cost)"
+      ],
+      "scores": {
+        "dronedeploy": [2, 3, 1, 3, 3, 2, 1, 3, 3, 1],
+        "pix4d": [2, 3, 3, 1, 1, 3, 2, 2, 3, 3],
+        "propeller": [1, 3, 1, 2, 1, 2, 2, 2, 3, 2],
+        "esri_sitescan": [2, 3, 2, 1, 1, 3, 2, 2, 2, 2],
+        "dji_flighthub": [3, 2, 1, 1, 3, 1, 1, 1, 2, 2],
+        "skydio_cloud": [3, 2, 1, 2, 2, 1, 3, 1, 2, 1]
+      },
+      "score_legend": { "1": "No / Absent", "2": "Partial / Limited", "3": "Full / Strong" }
+    }
+  },
+
+  "regulatory_timeline": {
+    "_description": "Key regulatory events affecting DroneDeploy's BVLOS and hardware ecosystem strategy. Each event includes business implication and risk classification.",
+    "_sources": ["DRONEDJ_BVLOS", "DD_PART108_BLOG", "FAA_OIG_REPORT", "DRONELIFE_FAA_SHUTDOWN", "UAVCOACH_DJI_ALT", "DRONEBUNDLE_BVLOS", "THEDRONEU_BVLOS"],
+    "events": [
+      {
+        "id": "bvlos_waiver_momentum",
+        "date": "2020-2024",
+        "date_display": "2020 → Oct 2024",
+        "event": "FAA BVLOS waiver issuance accelerates",
+        "detail": "6 BVLOS waivers issued in 2020 growing to 190+ by October 2024. FAA steadily increasing waiver approvals.",
+        "implication": "Regulatory momentum validates DroneDeploy's BVLOS bet. Growing market of customers able to operate autonomously.",
+        "type": "Positive",
+        "risk_level": "Opportunity",
+        "risk_score": 5,
+        "dd_impact": "High positive — validates dock/BVLOS product investments",
+        "source": "FAA_OIG_REPORT"
+      },
+      {
+        "id": "dd_nationwide_bvlos",
+        "date": "2025-02",
+        "date_display": "Feb 2025",
+        "event": "FAA grants DroneDeploy nationwide BVLOS waiver",
+        "detail": "DroneDeploy receives nationwide BVLOS authorization in partnership with ArgenTech Solutions. First major operator to secure this at national scale.",
+        "implication": "DroneDeploy can operate docked drones remotely on customer sites without requiring a pilot on-site. Major competitive moat vs platforms without BVLOS authorization.",
+        "type": "Positive",
+        "risk_level": "Major Opportunity",
+        "risk_score": 5,
+        "dd_impact": "Very High positive — enables autonomous dock operations at scale",
+        "source": "DRONEDJ_BVLOS"
+      },
+      {
+        "id": "executive_order_domestic",
+        "date": "2025-06",
+        "date_display": "Jun 2025",
+        "event": "Executive Order prioritizes US-manufactured drones",
+        "detail": "White House EO accelerates BVLOS waiver processing for NDAA-compliant US-made hardware (Skydio, Wingtra, Parrot). Direct tailwind for domestic drone programs.",
+        "implication": "Increases pressure on DJI-dependent programs. Customers on federal/gov-funded projects face stronger incentive to transition to NDAA-compliant hardware. DroneDeploy's DJI-heavy platform becomes more exposed.",
+        "type": "Mixed",
+        "risk_level": "Risk + Opportunity",
+        "risk_score": 3,
+        "dd_impact": "Mixed — tailwind for NDAA hardware integration priority, headwind for DJI install base",
+        "source": "THEDRONEU_BVLOS"
+      },
+      {
+        "id": "part108_comment_closed",
+        "date": "2025-10",
+        "date_display": "Oct 2025",
+        "event": "Part 108 NPRM comment period closes",
+        "detail": "FAA's proposed Part 108 rule would replace one-off BVLOS waivers with a scalable national framework. As proposed, would restrict DJI from BVLOS unless complex international manufacturer-FAA agreement reached. DroneDeploy lobbied for broader shielded ops definitions and direct DJI compliance path.",
+        "implication": "If Part 108 passes as proposed: DroneDeploy's dock program — built on DJI — loses BVLOS eligibility without a manufacturer agreement. Would require accelerated pivot to NDAA-compliant dock hardware.",
+        "type": "Risk",
+        "risk_level": "High Risk",
+        "risk_score": 1,
+        "dd_impact": "High risk — DJI dock program at risk if Part 108 passes as proposed",
+        "source": "DD_PART108_BLOG"
+      },
+      {
+        "id": "part108_paused",
+        "date": "2025-10",
+        "date_display": "Oct 2025 – Present",
+        "event": "Part 108 rulemaking paused — FAA administrative issues",
+        "detail": "Part 108 final rule delayed due to FAA administrative and staffing issues. Customers cannot rely on scalable framework and must still pursue 90-120 day one-off Part 107 waivers.",
+        "implication": "Short-term relief for DJI-dependent programs. But uncertainty continues — Part 108 risk not eliminated, just delayed. Customers face operational uncertainty for BVLOS expansion plans.",
+        "type": "Mixed",
+        "risk_level": "Temporary Relief",
+        "risk_score": 3,
+        "dd_impact": "Short-term positive (DJI dock program safe for now), long-term uncertainty remains",
+        "source": "DRONELIFE_FAA_SHUTDOWN"
+      },
+      {
+        "id": "dji_import_risk",
+        "date": "2025-00",
+        "date_display": "2025 Ongoing",
+        "event": "DJI Mavic 4 Pro absent from US market; import tensions persist",
+        "detail": "DJI's flagship Mavic 4 Pro unavailable in US due to import restrictions. DJI holds ~70% global commercial drone market but faces growing US trade and security scrutiny.",
+        "implication": "Hardware availability risk is not hypothetical. Customers planning long-term drone programs face uncertainty about DJI supply continuity. Reinforces urgency of NDAA-compliant alternative integration.",
+        "type": "Risk",
+        "risk_level": "Ongoing Risk",
+        "risk_score": 2,
+        "dd_impact": "Medium risk — customer confidence in DJI-only strategy declining",
+        "source": "UAVCOACH_DJI_ALT"
+      },
+      {
+        "id": "part108_expected_final",
+        "date": "2026-00",
+        "date_display": "2026 (Expected)",
+        "event": "Part 108 final rule expected — timeline uncertain",
+        "detail": "When (and if) Part 108 final rule publishes, it will define the scalable BVLOS framework. DJI compliance path is the pivotal unknown.",
+        "implication": "This is the binary event that determines whether DroneDeploy's DJI dock program can operate under a national framework or requires a hardware pivot. Critical to monitor.",
+        "type": "Pending",
+        "risk_level": "High Uncertainty",
+        "risk_score": 2,
+        "dd_impact": "Potentially Very High — outcome determines urgency of Skydio dock integration",
+        "source": "DD_PART108_BLOG,DRONEBUNDLE_BVLOS"
+      }
+    ],
+    "risk_legend": {
+      "Positive": { "color": "#10b981", "description": "Favorable regulatory development" },
+      "Risk": { "color": "#ef4444", "description": "Adverse regulatory development or exposure" },
+      "Mixed": { "color": "#f59e0b", "description": "Both positive and negative implications" },
+      "Pending": { "color": "#8b5cf6", "description": "Upcoming event with uncertain outcome" }
+    }
+  },
+
+  "aerial_pro_metrics": {
+    "_description": "Aerial Pro adoption context — data for H3 visualization on workflow communication vs pricing as adoption barrier.",
+    "_sources": ["DD_AERIAL_PRO", "DD_HORIZONS2025", "G2_DD_REVIEWS", "CHECKTHAT_REVIEWS", "PIX4D_COMPARISON"],
+    "tier_comparison": [
+      {
+        "tier": "Standard Aerial",
+        "processing_detail": "Standard",
+        "processing_speed": "Baseline",
+        "gcp_tagging": "Manual",
+        "earthworks_analysis": "Basic",
+        "accuracy_review": false,
+        "ai_agent_eligible": false,
+        "ai_agent_note": "May not meet accuracy threshold for Progress AI, Safety AI, Inspection AI",
+        "approx_monthly_cost": 329,
+        "source": "DD_AERIAL_PRO,PIX4D_COMPARISON"
+      },
+      {
+        "tier": "Aerial Pro",
+        "processing_detail": "4x finer detail",
+        "processing_speed": "2x faster",
+        "gcp_tagging": "Automatic",
+        "earthworks_analysis": "Advanced (every flight)",
+        "accuracy_review": true,
+        "ai_agent_eligible": true,
+        "ai_agent_note": "Survey-grade data enables reliable AI agent reasoning",
+        "approx_monthly_cost_delta": "~200-300 additional",
+        "source": "DD_AERIAL_PRO,DD_HORIZONS2025"
+      }
+    ],
+    "customer_review_themes": [
+      { "theme": "Ease of use", "sentiment": "Positive", "share_pct": 65, "source": "G2_DD_REVIEWS" },
+      { "theme": "Customer support quality", "sentiment": "Positive", "share_pct": 45, "source": "G2_DD_REVIEWS" },
+      { "theme": "Processing speed", "sentiment": "Mixed", "share_pct": 38, "source": "CHECKTHAT_REVIEWS" },
+      { "theme": "Pricing / cost", "sentiment": "Negative", "share_pct": 35, "source": "CHECKTHAT_REVIEWS,SKYEBROWSE_REVIEW" },
+      { "theme": "Output accuracy", "sentiment": "Mixed", "share_pct": 28, "source": "G2_DD_REVIEWS" },
+      { "theme": "AI agent reliability", "sentiment": "Early", "share_pct": 15, "source": "CHECKTHAT_REVIEWS" },
+      { "theme": "Hardware support gaps", "sentiment": "Negative", "share_pct": 22, "source": "SKYEBROWSE_REVIEW" }
+    ],
+    "g2_summary": {
+      "overall_rating": 4.5,
+      "review_count": 98,
+      "customer_support_rating": 4.7,
+      "source": "G2_DD_REVIEWS"
+    }
+  },
+
+  "references": {
+    "_description": "Full citation list. Every data point in this file references one or more of these source codes.",
+    "sources": {
+      "DD_AERIAL_PRODUCT": {
+        "title": "DroneDeploy Aerial: Professional Drone Mapping & Surveying Software Platform",
+        "publisher": "DroneDeploy",
+        "date": "2025",
+        "url": "https://www.dronedeploy.com/product/dronedeploy-aerial",
+        "type": "Primary — Product Page"
+      },
+      "DD_AERIAL_PRO": {
+        "title": "Aerial Pro",
+        "publisher": "DroneDeploy Help Center",
+        "date": "2025",
+        "url": "https://help.dronedeploy.com/hc/en-us/articles/29426388282007-Aerial-Pro",
+        "type": "Primary — Documentation"
+      },
+      "DD_JAN2025": {
+        "title": "January 2025 Product Release",
+        "publisher": "DroneDeploy Blog",
+        "date": "January 2025",
+        "url": "https://www.dronedeploy.com/blog/january-2025-product-release-blog",
+        "type": "Primary — Release Notes"
+      },
+      "DD_APR2025": {
+        "title": "April 2025 Product Release",
+        "publisher": "DroneDeploy Blog",
+        "date": "April 21, 2025",
+        "url": "https://www.dronedeploy.com/blog/april-2025-product-release",
+        "type": "Primary — Release Notes"
+      },
+      "DD_JUL2025": {
+        "title": "July 2025 Product Release",
+        "publisher": "DroneDeploy Blog",
+        "date": "July 2025",
+        "url": "https://www.dronedeploy.com/blog/july-2025-product-release",
+        "type": "Primary — Release Notes"
+      },
+      "DD_OCT2025": {
+        "title": "October 2025 Product Release",
+        "publisher": "DroneDeploy Blog",
+        "date": "October 2025",
+        "url": "https://www.dronedeploy.com/blog/october-2025-product-release",
+        "type": "Primary — Release Notes"
+      },
+      "DD_HORIZONS2025": {
+        "title": "Horizons 2025 Recap: Autonomous Robotics and AI Come to the Field",
+        "publisher": "DroneDeploy Blog",
+        "date": "November 2025",
+        "url": "https://www.dronedeploy.com/blog/horizons-2025-recap-autonomous-robotics-and-ai-come-to-the-field",
+        "type": "Primary — Company Event"
+      },
+      "DD_PART108_BLOG": {
+        "title": "Part 108 Is Here, But It Needs Your Help: Why You Must Comment on the FAA's BVLOS Proposal",
+        "publisher": "DroneDeploy Blog",
+        "date": "2025",
+        "url": "https://www.dronedeploy.com/blog/part-108-faa-bvlos-proposal",
+        "type": "Primary — Policy Position"
+      },
+      "DRONEDJ_BVLOS": {
+        "title": "FAA Expands DroneDeploy's Reach with Nationwide BVLOS Authorization",
+        "publisher": "DroneDJ",
+        "date": "February 6, 2025",
+        "url": "https://dronedj.com/2025/02/06/dronedeploy-bvlos-drone-construction-monitoring/",
+        "type": "Secondary — Trade Press"
+      },
+      "FAA_OIG_REPORT": {
+        "title": "Report AV2025034: BVLOS Drone Operations",
+        "publisher": "U.S. Department of Transportation, Office of Inspector General",
+        "date": "June 30, 2025",
+        "url": "https://www.oig.dot.gov/sites/default/files/library-items/FAA%20BVLOS%20Drone%20Operations%20Final%20Report_6.30.2025.pdf",
+        "type": "Primary — Government Report"
+      },
+      "DRONELIFE_FAA_SHUTDOWN": {
+        "title": "FAA Shutdown Stalls Drone Progress: Waivers, BVLOS Rulemaking, and Modernization Delayed",
+        "publisher": "DroneLife",
+        "author": "McNabb, Miriam",
+        "date": "October 22, 2025",
+        "url": "https://dronelife.com/2025/10/22/faa-shutdown-stalls-drone-progress-waivers-bvlos-rulemaking-and-modernization-delayed/",
+        "type": "Secondary — Trade Press"
+      },
+      "UAVCOACH_DJI_ALT": {
+        "title": "DJI Alternatives: An In-Depth Guide",
+        "publisher": "UAV Coach",
+        "date": "January 2026",
+        "url": "https://uavcoach.com/dji-alternatives/",
+        "type": "Secondary — Industry Guide"
+      },
+      "SKYEBROWSE_REVIEW": {
+        "title": "DroneDeploy Review: Powerful Enterprise Platform with Costly Blind Spots",
+        "publisher": "SkyeBrowse",
+        "date": "2025",
+        "url": "https://www.skyebrowse.com/news/posts/dronedeploy-review",
+        "type": "Secondary — Platform Review"
+      },
+      "G2_DD_REVIEWS": {
+        "title": "DroneDeploy Reviews 2026: Details, Pricing & Features",
+        "publisher": "G2",
+        "date": "2026",
+        "url": "https://www.g2.com/products/dronedeploy/reviews",
+        "type": "Secondary — User Reviews"
+      },
+      "G2_SKYDIO_ALT": {
+        "title": "Top 10 Skydio Alternatives & Competitors in 2026",
+        "publisher": "G2",
+        "date": "2026",
+        "url": "https://www.g2.com/products/skydio/competitors/alternatives",
+        "type": "Secondary — Competitive Intelligence"
+      },
+      "CHECKTHAT_REVIEWS": {
+        "title": "DroneDeploy Reviews 2026: What Users Really Think",
+        "publisher": "CheckThat.ai",
+        "date": "January 2026",
+        "url": "https://checkthat.ai/brands/dronedeploy/reviews",
+        "type": "Secondary — User Reviews"
+      },
+      "PIX4D_COMPARISON": {
+        "title": "Drone and terrestrial mapping: Pix4D vs DroneDeploy",
+        "publisher": "Pix4D",
+        "date": "2025",
+        "url": "https://www.pix4d.com/drone-and-terrestrial-mapping-pix4d-vs-dronedeploy",
+        "type": "Secondary — Competitor Comparison"
+      },
+      "ANVIL_COMPARISON": {
+        "title": "Pix4D vs DroneDeploy: Photogrammetry Software Comparison",
+        "publisher": "Anvil Labs",
+        "date": "June 19, 2025",
+        "url": "https://anvil.so/post/pix4d-vs-dronedeploy-photogrammetry-software-comparison",
+        "type": "Secondary — Industry Analysis"
+      },
+      "DRONEDESK_COMPARISON": {
+        "title": "Drone Mapping Software: Complete Comparison Guide [2026]",
+        "publisher": "Dronedesk",
+        "date": "2026",
+        "url": "https://dronedesk.io/drone-mapping-software-guide",
+        "type": "Secondary — Industry Guide"
+      },
+      "GRANDVIEW_DRONE": {
+        "title": "Drone Market Size, Share & Growth | Industry Report, 2033",
+        "publisher": "Grand View Research",
+        "date": "2025-2026",
+        "url": "https://www.grandviewresearch.com/industry-analysis/drone-market-report",
+        "type": "Market Research — Analyst Report"
+      },
+      "NEXTMSC_DRONE": {
+        "title": "Latest Drone Market Report | Global Outlook 2030",
+        "publisher": "Next Move Strategy Consulting",
+        "date": "January 21, 2026",
+        "url": "https://www.nextmsc.com/report/drone-market",
+        "type": "Market Research — Analyst Report"
+      },
+      "PERSISTENCE_DRONE": {
+        "title": "Commercial Drone Market Size, Share & Industry Trends",
+        "publisher": "Persistence Market Research",
+        "date": "2025",
+        "url": "https://www.persistencemarketresearch.com/market-research/commercial-drone-market.asp",
+        "type": "Market Research — Analyst Report"
+      },
+      "MORDOR_DRONE": {
+        "title": "Drones Market Size, Trends & Share Analysis 2031",
+        "publisher": "Mordor Intelligence",
+        "date": "January 2026",
+        "url": "https://www.mordorintelligence.com/industry-reports/drones-market",
+        "type": "Market Research — Analyst Report"
+      },
+      "TECHNAVIO_COMMERCIAL": {
+        "title": "Commercial Drones Market Growth Analysis - Size and Forecast 2025-2029",
+        "publisher": "Technavio",
+        "date": "January 2025",
+        "url": "https://www.technavio.com/report/commercial-drones-market-industry-analysis",
+        "type": "Market Research — Analyst Report"
+      },
+      "PRECEDENCE_SERVICES": {
+        "title": "Drone Services Market Size, Share and Trends 2026 to 2035",
+        "publisher": "Precedence Research",
+        "date": "February 24, 2026",
+        "url": "https://www.precedenceresearch.com/drone-services-market",
+        "type": "Market Research — Analyst Report"
+      },
+      "JOUAV_COMPANIES": {
+        "title": "Top Drone Companies 2026: 50+ Leading Manufacturers",
+        "publisher": "JOUAV Blog",
+        "date": "March 2026",
+        "url": "https://www.jouav.com/blog/drone-companies.html",
+        "type": "Secondary — Industry Overview"
+      },
+      "PRECEDENCE_COMMERCIAL": {
+        "title": "Commercial Drone Market Size to Hit USD 1,445.80 Bn by 2035",
+        "publisher": "Precedence Research",
+        "date": "January 8, 2026",
+        "url": "https://www.precedenceresearch.com/commercial-drone-market",
+        "type": "Market Research — Analyst Report"
+      },
+      "DRONEBUNDLE_BVLOS": {
+        "title": "BVLOS Operations: Complete Compliance Guide for 2025",
+        "publisher": "DroneBundle",
+        "date": "November 2025",
+        "url": "https://dronebundle.com/blog/bvlos-operations-compliance-guide-2025",
+        "type": "Secondary — Industry Guide"
+      },
+      "THEDRONEU_BVLOS": {
+        "title": "Flying Beyond Visual Line of Sight: What Every FAA Remote Pilot Must Know",
+        "publisher": "The Drone U",
+        "date": "2025",
+        "url": "https://www.thedroneu.com/blog/bvlos-remote-operations/",
+        "type": "Secondary — Industry Guide"
+      },
+      "DD_BRIEFING_INTERNAL": {
+        "title": "DroneDeploy Application and Interview Prep Briefing",
+        "publisher": "Internal — Nishchay Vishwanath",
+        "date": "March 2026",
+        "url": null,
+        "type": "Internal Research"
+      }
+    }
+  }
+}
