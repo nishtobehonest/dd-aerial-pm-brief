@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
   AlertTriangle, Zap, Target, Map, Radio, CheckCircle, Info,
-  TrendingUp, Activity
+  TrendingUp, Activity, BookOpen, ExternalLink, LayoutDashboard, ArrowRight
 } from 'lucide-react';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
@@ -12,10 +12,12 @@ import data from './data.json';
 // ─── TAB CONFIG ───────────────────────────────────────────────────────────────
 
 const TABS = [
+  { label: 'Summary', icon: LayoutDashboard },
   { label: 'Hardware Ecosystem Plan', icon: Map },
   { label: 'Customer Discovery & Roadmap', icon: Radio },
   { label: 'Market Opportunity', icon: TrendingUp },
   { label: 'Regulatory Timeline', icon: Activity },
+  { label: 'References', icon: BookOpen },
 ];
 
 // ─── DERIVED DATA FROM data.json ─────────────────────────────────────────────
@@ -151,6 +153,153 @@ const VerticalTooltip = ({ active, payload, label }) => {
     </div>
   );
 };
+
+// ─── TAB 0: SUMMARY ──────────────────────────────────────────────────────────
+
+const Summary = ({ onTab }) => (
+  <div className="tab-content">
+    <div className="section-header">
+      <span className="section-tag">PRE-DISCOVERY · 5 TABS · 29 SOURCES</span>
+      <h2 className="section-title">DroneDeploy Aerial PM — Pre-Discovery Brief</h2>
+      <p className="section-framing">
+        A structured hypothesis brief built entirely from public sources: product release notes, regulatory filings, third-party reviews, and market data. This is what I would walk into discovery to validate — not a 90-day plan.
+      </p>
+    </div>
+
+    {/* Who this is */}
+    <div className="content-block">
+      <div className="block-label">ABOUT THIS BRIEF</div>
+      <div className="summary-about-grid">
+        <div className="summary-about-card">
+          <div className="summary-about-label">AUTHOR</div>
+          <div className="summary-about-value">Nishchay Vishwanath</div>
+          <div className="summary-about-sub">Cornell MEM '26 · Product Management</div>
+        </div>
+        <div className="summary-about-card">
+          <div className="summary-about-label">SCOPE</div>
+          <div className="summary-about-value">DroneDeploy Aerial Platform</div>
+          <div className="summary-about-sub">Hardware ecosystem, customer discovery, market sizing, regulatory risk</div>
+        </div>
+        <div className="summary-about-card">
+          <div className="summary-about-label">SOURCES</div>
+          <div className="summary-about-value">29 Public Sources</div>
+          <div className="summary-about-sub">Release notes, G2 reviews, FAA filings, analyst reports</div>
+        </div>
+        <div className="summary-about-card">
+          <div className="summary-about-label">DATE</div>
+          <div className="summary-about-value">March 2026</div>
+          <div className="summary-about-sub">Pre-discovery · All data publicly available</div>
+        </div>
+      </div>
+    </div>
+
+    {/* The core argument */}
+    <div className="content-block">
+      <div className="block-label">THE CORE ARGUMENT</div>
+      <div className="summary-argument">
+        <p>DroneDeploy's three strategic bets — hardware-agnostic capture, docked BVLOS at scale, and AI agents that reason — are mutually reinforcing when the system works. The Aerial platform is where they break or hold.</p>
+        <p>The problem: all three bets currently depend on DJI, which holds ~70% of global commercial drone market share and is the <em>only</em> platform with native flight planning in DroneDeploy. That dependency is under simultaneous pressure from three directions: Part 108 rulemaking that could restrict DJI from BVLOS, a June 2025 Executive Order that structurally favors US-manufactured platforms, and import friction that kept DJI's Mavic 4 Pro off the US market entirely in 2025.</p>
+        <p>The three hypotheses below are what I believe need to be tested first — in that order — and what discovery would confirm or kill.</p>
+      </div>
+    </div>
+
+    {/* 3 hypotheses */}
+    <div className="content-block">
+      <div className="block-label">THREE HYPOTHESES · ORDERED BY URGENCY</div>
+      <div className="summary-hyp-list">
+        <div className="summary-hyp">
+          <div className="summary-hyp-header">
+            <span className="hypothesis-tag">H1</span>
+            <span className="summary-hyp-title">The DJI dependency is a near-term business risk, not a regulatory footnote</span>
+            <button className="summary-hyp-link" onClick={() => onTab(1)}>Hardware tab <ArrowRight size={12} /></button>
+          </div>
+          <p className="summary-hyp-body">DroneDeploy's native flight integration is 100% DJI. All NDAA-compliant alternatives (Skydio, Wingtra, Parrot) are processing-only. Federal and government-funded customers with NDAA requirements have no unified flight management option today — and Part 108 could remove DJI from BVLOS entirely. The gap between install-base reality and regulatory trajectory is where churn lives.</p>
+          <div className="summary-hyp-signal">
+            <span className="summary-signal-label">DISCOVERY CONFIRMED:</span> 2 customers actively evaluating platform switches. One energy company has 8 Skydio X10s sitting unused because DroneDeploy can't fly them.
+          </div>
+        </div>
+
+        <div className="summary-hyp">
+          <div className="summary-hyp-header">
+            <span className="hypothesis-tag">H2</span>
+            <span className="summary-hyp-title">Skydio X10 is the highest-ROI first native flight integration beyond DJI</span>
+            <button className="summary-hyp-link" onClick={() => onTab(1)}>Hardware tab <ArrowRight size={12} /></button>
+          </div>
+          <p className="summary-hyp-body">Among NDAA-compliant platforms, Skydio has the highest enterprise density in the DroneDeploy install base. An existing processing SDK lowers integration complexity. The X10 is BVLOS-eligible, autonomous flight-capable, and deployed across the same verticals (construction, energy, infrastructure) where DJI is currently used. Wingtra is the right second integration (survey/mining); Parrot is third. Skydio is first because it addresses the broadest need with the lowest ramp.</p>
+          <div className="summary-hyp-signal">
+            <span className="summary-signal-label">ROADMAP DECISION:</span> Skydio X10 elevated to P0 for native flight integration. Processing-only posture maintained for all other non-DJI platforms pending Part 108 clarity.
+          </div>
+        </div>
+
+        <div className="summary-hyp">
+          <div className="summary-hyp-header">
+            <span className="hypothesis-tag">H3</span>
+            <span className="summary-hyp-title">The Aerial Pro adoption barrier is a workflow communication problem, not a pricing problem</span>
+            <button className="summary-hyp-link" onClick={() => onTab(2)}>Discovery tab <ArrowRight size={12} /></button>
+          </div>
+          <p className="summary-hyp-body">Aerial Pro is the data quality layer that enables Progress AI, Safety AI, and Inspection AI to reason reliably. But there is no in-workflow signal that communicates this. Customers see "premium mapping tier" — not "AI enablement." DroneDeploy's pricing ($329–$599/mo vs Pix4D's $59–$299/mo) makes pricing an intuitive hypothesis, but discovery confirmed it's a framing problem: customers don't understand the quality–AI link until after the fact.</p>
+          <div className="summary-hyp-signal">
+            <span className="summary-signal-label">DISCOVERY CONFIRMED:</span> 2 customers didn't know their data quality limited AI agent reliability. "I didn't realize my maps weren't good enough for AI. Nobody told me that."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Key numbers */}
+    <div className="content-block">
+      <div className="block-label">KEY NUMBERS</div>
+      <div className="summary-stats-grid">
+        <div className="summary-stat">
+          <div className="summary-stat-value">~70%</div>
+          <div className="summary-stat-label">DJI global commercial drone market share</div>
+        </div>
+        <div className="summary-stat">
+          <div className="summary-stat-value">6 of 8</div>
+          <div className="summary-stat-label">NDAA-compliant platforms limited to processing-only in DD</div>
+        </div>
+        <div className="summary-stat">
+          <div className="summary-stat-value">$65.1B</div>
+          <div className="summary-stat-label">Total drone market 2025 · 12.5% CAGR through 2030</div>
+        </div>
+        <div className="summary-stat">
+          <div className="summary-stat-value">24%</div>
+          <div className="summary-stat-label">Software/services segment CAGR 2026–2035</div>
+        </div>
+        <div className="summary-stat">
+          <div className="summary-stat-value">PAUSED</div>
+          <div className="summary-stat-label">Part 108 rulemaking · FAA administrative issues</div>
+        </div>
+        <div className="summary-stat">
+          <div className="summary-stat-value">190+</div>
+          <div className="summary-stat-label">BVLOS Part 107 waivers issued through Oct 2024</div>
+        </div>
+      </div>
+    </div>
+
+    {/* Tab navigator */}
+    <div className="content-block">
+      <div className="block-label">WHAT'S IN EACH TAB</div>
+      <div className="summary-nav-grid">
+        {[
+          { tab: 1, icon: Map, label: 'Hardware Ecosystem Plan', desc: '8 platforms evaluated. DJI dependency risk, NDAA compliance gap, Skydio X10 hypothesis, regulatory timeline, and 2 platform hypotheses with discovery validation questions.' },
+          { tab: 2, icon: Radio, label: 'Customer Discovery & Roadmap', desc: '6 simulated discovery sessions across 3 themes — hardware transition, BVLOS reliability, Aerial Pro adoption. Roadmap decisions derived from each finding.' },
+          { tab: 3, icon: TrendingUp, label: 'Market Opportunity', desc: '$65B total drone market with software/services growing at 24% CAGR. Vertical breakdown with DroneDeploy relevance scoring.' },
+          { tab: 4, icon: Activity, label: 'Regulatory Timeline', desc: 'FAA BVLOS waiver, Part 108 rulemaking pause, June 2025 Executive Order, NDAA covered list risk. Risk/opportunity scored over time.' },
+          { tab: 5, icon: BookOpen, label: 'References', desc: '29 public sources cited and linked — DroneDeploy release notes, FAA filings, G2 reviews, analyst reports, trade press.' },
+        ].map(({ tab, icon: Icon, label, desc }) => (
+          <button key={tab} className="summary-nav-card" onClick={() => onTab(tab)}>
+            <div className="summary-nav-header">
+              <Icon size={14} />
+              <span className="summary-nav-label">{label}</span>
+              <ArrowRight size={12} className="summary-nav-arrow" />
+            </div>
+            <p className="summary-nav-desc">{desc}</p>
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+);
 
 // ─── TAB 1: HARDWARE ECOSYSTEM PLAN ─────────────────────────────────────────
 
@@ -946,6 +1095,72 @@ const RegulatoryTimeline = () => (
   </div>
 );
 
+// ─── TAB 5: REFERENCES ───────────────────────────────────────────────────────
+
+const REF_GROUPS = [
+  { prefix: 'Primary — Government', label: 'Government & Regulatory' },
+  { prefix: 'Primary',              label: 'DroneDeploy Sources' },
+  { prefix: 'Secondary — Trade Press', label: 'Trade Press' },
+  { prefix: 'Secondary — Platform Review', label: 'Platform Reviews' },
+  { prefix: 'Secondary — User Reviews', label: 'User Reviews' },
+  { prefix: 'Secondary — Competitive', label: 'Competitive Intelligence' },
+  { prefix: 'Secondary — Competitor', label: 'Competitor Comparisons' },
+  { prefix: 'Secondary — Industry', label: 'Industry Guides & Analysis' },
+  { prefix: 'Market Research',      label: 'Market Research' },
+  { prefix: 'Internal',             label: 'Internal Research' },
+];
+
+const References = () => {
+  const sourcesMap = (data.references || {}).sources || {};
+  const allRefs = Object.entries(sourcesMap).map(([id, ref]) => ({ id, ...ref }));
+
+  // Each ref goes into the first matching prefix group only
+  const assigned = new Set();
+  const groups = REF_GROUPS.map(({ prefix, label }) => {
+    const items = allRefs.filter(r => !assigned.has(r.id) && r.type && r.type.startsWith(prefix));
+    items.forEach(r => assigned.add(r.id));
+    return { label, items };
+  }).filter(g => g.items.length > 0);
+
+  // Catch any unmatched refs
+  const matched = new Set(groups.flatMap(g => g.items.map(r => r.id)));
+  const unmatched = allRefs.filter(r => !matched.has(r.id));
+  if (unmatched.length) groups.push({ label: 'Other', items: unmatched });
+
+  return (
+    <div className="tab-content">
+      <div className="section-header">
+        <span className="section-tag">{allRefs.length} SOURCES · PUBLIC DATA ONLY</span>
+        <h2 className="section-title">Research References</h2>
+        <p className="section-desc">All sources used to construct this analysis, derived entirely from publicly available information.</p>
+      </div>
+      {groups.map(({ label, items }) => (
+        <div key={label} className="content-block">
+          <div className="block-label">{label}</div>
+          <div className="ref-list">
+            {items.map(ref => (
+              <div key={ref.id} className="ref-row">
+                <div className="ref-main">
+                  {ref.url ? (
+                    <a className="ref-title" href={ref.url} target="_blank" rel="noreferrer">
+                      {ref.title}
+                      <ExternalLink size={11} />
+                    </a>
+                  ) : (
+                    <span className="ref-title ref-no-link">{ref.title}</span>
+                  )}
+                  <span className="ref-meta">{ref.publisher}{ref.date ? ` · ${ref.date}` : ''}</span>
+                </div>
+                <span className="ref-id">{ref.id}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
 // ─── MAIN APP ─────────────────────────────────────────────────────────────────
 
 export default function App() {
@@ -1024,7 +1239,12 @@ export default function App() {
           position: sticky;
           top: 52px;
           z-index: 99;
+          overflow-x: auto;
+          overflow-y: hidden;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
         }
+        .tab-bar::-webkit-scrollbar { display: none; }
         .tab-btn {
           display: flex;
           align-items: center;
@@ -1734,15 +1954,50 @@ export default function App() {
 
         /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
-          .app-header, .tab-bar, .main-content, .app-footer, .disclaimer-banner { padding-left: 16px; padding-right: 16px; }
+          /* Layout */
+          .app-header, .main-content, .app-footer, .disclaimer-banner { padding-left: 16px; padding-right: 16px; }
           .main-content { padding-top: 24px; padding-bottom: 60px; }
+
+          /* Header */
+          .app-header { height: auto; min-height: 48px; padding-top: 10px; padding-bottom: 10px; flex-wrap: wrap; gap: 2px; }
+          .header-meta { display: none; }
+          .header-title { font-size: 12px; }
+
+          /* Tab bar */
+          .tab-bar { padding: 0 8px; top: 48px; }
+          .tab-btn { padding: 11px 10px; font-size: 12px; gap: 5px; white-space: nowrap; }
+          .tab-btn svg { display: none; }
+
+          /* Section typography */
+          .section-title { font-size: 18px; }
+          .section-framing { font-size: 13px; }
+
+          /* Grids → single column */
           .callout-row, .discovery-grid, .reco-grid, .strategic-bets { grid-template-columns: 1fr; }
-          .deprio-row { flex-direction: column; gap: 4px; }
-          .deprio-item { min-width: unset; white-space: normal; }
-          .hw-table { font-size: 12px; }
-          .stat-cards-row { grid-template-columns: 1fr; }
+          .stat-cards-row { grid-template-columns: 1fr 1fr; }
+
+          /* Tables */
+          .hw-table { font-size: 11.5px; }
+          .hw-table th, .hw-table td { padding: 8px 10px; }
           .fm-table { font-size: 10px; }
           .relevance-legend { gap: 8px; }
+
+          /* Deprioritization list */
+          .deprio-row { flex-direction: column; gap: 4px; }
+          .deprio-item { min-width: unset; white-space: normal; }
+
+          /* Timeline */
+          .timeline-item { flex-direction: column; gap: 6px; }
+          .timeline-date { min-width: unset; }
+
+          /* Footer */
+          .footer-meta { flex-direction: column; gap: 4px; }
+          .app-footer { padding-top: 24px; padding-bottom: 20px; }
+        }
+
+        @media (max-width: 480px) {
+          .stat-cards-row { grid-template-columns: 1fr; }
+          .tab-btn { padding: 10px 9px; font-size: 11.5px; }
         }
 
         /* ── DATA DIVIDER ── */
@@ -1942,6 +2197,205 @@ export default function App() {
         /* ── ADDITIONAL TIMELINE TYPES ── */
         .timeline-mixed { border-left-color: var(--accent-amber); }
         .timeline-pending { border-left-color: #8b5cf6; }
+
+        /* ── SUMMARY ── */
+        .summary-about-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 12px;
+        }
+        @media (max-width: 768px) { .summary-about-grid { grid-template-columns: 1fr 1fr; } }
+        .summary-about-card {
+          background: var(--bg-secondary);
+          border: 1px solid var(--border);
+          border-radius: 6px;
+          padding: 14px 16px;
+        }
+        .summary-about-label {
+          font-family: var(--font-mono);
+          font-size: 10px;
+          letter-spacing: 0.08em;
+          color: var(--text-secondary);
+          margin-bottom: 6px;
+        }
+        .summary-about-value {
+          font-size: 14px;
+          font-weight: 600;
+          color: var(--text-primary);
+          margin-bottom: 3px;
+        }
+        .summary-about-sub {
+          font-size: 11.5px;
+          color: var(--text-secondary);
+          line-height: 1.5;
+        }
+        .summary-argument {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          font-size: 13.5px;
+          color: var(--text-primary);
+          line-height: 1.7;
+          max-width: 860px;
+        }
+        .summary-argument p { margin: 0; }
+        .summary-argument em { color: var(--accent-amber); font-style: normal; font-weight: 500; }
+        .summary-hyp-list { display: flex; flex-direction: column; gap: 0; }
+        .summary-hyp {
+          padding: 20px 0;
+          border-bottom: 1px solid var(--border);
+        }
+        .summary-hyp:last-child { border-bottom: none; }
+        .summary-hyp-header {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 10px;
+          flex-wrap: wrap;
+        }
+        .summary-hyp-title {
+          font-size: 14px;
+          font-weight: 600;
+          color: var(--text-primary);
+          flex: 1;
+        }
+        .summary-hyp-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          font-family: var(--font-mono);
+          font-size: 10px;
+          color: var(--accent-blue);
+          background: none;
+          border: 1px solid var(--border);
+          border-radius: 4px;
+          padding: 4px 9px;
+          cursor: pointer;
+          white-space: nowrap;
+          transition: border-color 0.15s;
+        }
+        .summary-hyp-link:hover { border-color: var(--accent-blue); }
+        .summary-hyp-body {
+          font-size: 13px;
+          color: var(--text-secondary);
+          line-height: 1.65;
+          margin: 0 0 10px 0;
+          max-width: 860px;
+        }
+        .summary-hyp-signal {
+          font-size: 12px;
+          color: var(--accent-green);
+          font-family: var(--font-mono);
+          background: rgba(16, 185, 129, 0.07);
+          border: 1px solid rgba(16, 185, 129, 0.2);
+          border-radius: 4px;
+          padding: 8px 12px;
+          display: inline-block;
+        }
+        .summary-signal-label { font-weight: 600; margin-right: 6px; }
+        .summary-stats-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 12px;
+        }
+        @media (max-width: 768px) { .summary-stats-grid { grid-template-columns: 1fr 1fr; } }
+        .summary-stat {
+          background: var(--bg-secondary);
+          border: 1px solid var(--border);
+          border-radius: 6px;
+          padding: 16px;
+        }
+        .summary-stat-value {
+          font-family: var(--font-mono);
+          font-size: 22px;
+          font-weight: 600;
+          color: var(--accent-blue);
+          margin-bottom: 6px;
+        }
+        .summary-stat-label {
+          font-size: 12px;
+          color: var(--text-secondary);
+          line-height: 1.5;
+        }
+        .summary-nav-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+        }
+        @media (max-width: 768px) { .summary-nav-grid { grid-template-columns: 1fr; } }
+        .summary-nav-card {
+          background: var(--bg-secondary);
+          border: 1px solid var(--border);
+          border-radius: 6px;
+          padding: 14px 16px;
+          text-align: left;
+          cursor: pointer;
+          transition: border-color 0.15s;
+        }
+        .summary-nav-card:hover { border-color: var(--accent-blue); }
+        .summary-nav-header {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 6px;
+          color: var(--accent-blue);
+        }
+        .summary-nav-label {
+          font-family: var(--font-mono);
+          font-size: 11px;
+          color: var(--text-primary);
+          font-weight: 500;
+          flex: 1;
+        }
+        .summary-nav-arrow { color: var(--text-secondary); }
+        .summary-nav-desc {
+          font-size: 12px;
+          color: var(--text-secondary);
+          line-height: 1.6;
+          margin: 0;
+        }
+
+        /* ── REFERENCES ── */
+        .ref-list { display: flex; flex-direction: column; }
+        .ref-row {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 16px;
+          padding: 12px 0;
+          border-bottom: 1px solid var(--border);
+        }
+        .ref-row:last-child { border-bottom: none; }
+        .ref-main { display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 0; }
+        .ref-title {
+          font-size: 13px;
+          font-weight: 500;
+          color: var(--accent-blue);
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          text-decoration: none;
+          line-height: 1.4;
+        }
+        .ref-title:hover { text-decoration: underline; }
+        .ref-no-link { color: var(--text-primary); }
+        .ref-meta {
+          font-size: 11.5px;
+          color: var(--text-secondary);
+          font-family: var(--font-mono);
+        }
+        .ref-id {
+          font-family: var(--font-mono);
+          font-size: 10px;
+          color: var(--text-secondary);
+          background: var(--bg-secondary);
+          border: 1px solid var(--border);
+          border-radius: 3px;
+          padding: 2px 6px;
+          white-space: nowrap;
+          flex-shrink: 0;
+          align-self: center;
+        }
       `}</style>
 
       <div className="app-bg">
@@ -1975,10 +2429,12 @@ export default function App() {
 
         {/* Main Content */}
         <main className="main-content">
-          {activeTab === 0 && <HardwarePlan />}
-          {activeTab === 1 && <DiscoveryRoadmap />}
-          {activeTab === 2 && <MarketOpportunity />}
-          {activeTab === 3 && <RegulatoryTimeline />}
+          {activeTab === 0 && <Summary onTab={setActiveTab} />}
+          {activeTab === 1 && <HardwarePlan />}
+          {activeTab === 2 && <DiscoveryRoadmap />}
+          {activeTab === 3 && <MarketOpportunity />}
+          {activeTab === 4 && <RegulatoryTimeline />}
+          {activeTab === 5 && <References />}
         </main>
 
         {/* Footer */}
