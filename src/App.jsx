@@ -215,7 +215,7 @@ const Summary = ({ onTab }) => (
           </div>
           <p className="summary-hyp-body">DroneDeploy's native flight integration is 100% DJI. All NDAA-compliant alternatives (Skydio, Wingtra, Parrot) are processing-only. Federal and government-funded customers with NDAA requirements have no unified flight management option today — and Part 108 could remove DJI from BVLOS entirely. The gap between install-base reality and regulatory trajectory is where churn lives.</p>
           <div className="summary-hyp-signal">
-            <span className="summary-signal-label">DISCOVERY CONFIRMED:</span> 2 customers actively evaluating platform switches. One energy company has 8 Skydio X10s sitting unused because DroneDeploy can't fly them.
+            <span className="summary-signal-label">HYPOTHESIS SIGNAL:</span> 2 customers actively evaluating platform switches. One energy company has 8 Skydio X10s sitting unused because DroneDeploy can't fly them.
           </div>
         </div>
 
@@ -239,7 +239,7 @@ const Summary = ({ onTab }) => (
           </div>
           <p className="summary-hyp-body">Aerial Pro is the data quality layer that enables Progress AI, Safety AI, and Inspection AI to reason reliably. But there is no in-workflow signal that communicates this. Customers see "premium mapping tier" — not "AI enablement." DroneDeploy's pricing ($329–$599/mo vs Pix4D's $59–$299/mo) makes pricing an intuitive hypothesis, but discovery confirmed it's a framing problem: customers don't understand the quality–AI link until after the fact.</p>
           <div className="summary-hyp-signal">
-            <span className="summary-signal-label">DISCOVERY CONFIRMED:</span> 2 customers didn't know their data quality limited AI agent reliability. "I didn't realize my maps weren't good enough for AI. Nobody told me that."
+            <span className="summary-signal-label">HYPOTHESIS SIGNAL:</span> 2 customers didn't know their data quality limited AI agent reliability. "I didn't realize my maps weren't good enough for AI. Nobody told me that."
           </div>
         </div>
       </div>
