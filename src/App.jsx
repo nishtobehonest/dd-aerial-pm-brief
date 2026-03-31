@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  AlertTriangle, Shield, Zap, Target, Map, Radio, CheckCircle, Info,
+  AlertTriangle, Zap, Target, Map, Radio, CheckCircle, Info,
   TrendingUp, Activity
 } from 'lucide-react';
 import {
